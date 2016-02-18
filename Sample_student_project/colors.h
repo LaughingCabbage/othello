@@ -1,3 +1,7 @@
+/**\file colors.h
+*\breif contains fomatting code to change the color of text
+*@author Matthew Beldyk
+**/
 //***********************************************************
 //
 //  File:     colors.h
@@ -24,10 +28,13 @@
 //
 //***********************************************************
 
+
+
 #ifndef COLORS_H
 #define COLORS_H
 
 #include <string>
+///\namespace std
 using namespace std;
 
 const string BLINK     = "\e[5m";          //don't use this your

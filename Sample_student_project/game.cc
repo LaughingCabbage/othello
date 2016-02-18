@@ -1,5 +1,9 @@
 // File: game.cxx
 
+/**\file game.cc
+*\breif contains the game play implementation for othello
+*************************************************/
+
 #include <cassert>    // Provides assert
 #include <climits>    // Provides INT_MAX and INT_MIN
 #include <iostream>   // Provides cin, cout
@@ -7,7 +11,7 @@
 #include <string>     // Provides string
 #include "game.h"     // Provides definition of game class
 using namespace std;
-
+///\namespace main_savitch_14
 namespace main_savitch_14
 {
 //*************************************************************************
@@ -17,6 +21,10 @@ namespace main_savitch_14
 //*************************************************************************
 // PUBLIC MEMBER FUNCTIONS
 
+/**
+*game play function
+*@return Player enumeration value
+**/
 game::who game::play( )
 // The play function should not be overridden. It plays one round of the
 // game, with the human player moving first and the computer second.
@@ -45,11 +53,18 @@ game::who game::play( )
 //*************************************************************************
 // OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
 
+/**
+*dispaly message to user
+*@param string a constant string value
+**/
 void game::display_message(const string& message) const
 {
 	cout << message;
 }
-
+/**
+*get user move from standard input
+*@return string input value
+**/
 string game::get_user_move( ) const
 {
 	string answer;
@@ -59,7 +74,10 @@ string game::get_user_move( ) const
 	getline(cin, answer);
 	return answer;
 }
-
+/**
+*calculate the leading player for use with AI
+*@return Player enumeration value.
+**/
 game::who game::winning()const {
 
 	int value = evaluate();
@@ -78,12 +96,17 @@ game::who game::winning()const {
 // PRIVATE FUNCTIONS (these are the same for every game)
 
 int game::eval_with_lookahead(int look_ahead, int beat_this)
+/**
 // Evaluate a board position with lookahead.
 // --int look_aheads:  How deep the lookahead should go to evaluate the move.
 // --int beat_this: Value of another move that we're considering. If the
 // current board position can't beat this, then cut it short.
 // The return value is large if the position is good for the player who just
 // moved.
+*@param look_ahead look ahead integer.
+*@param beat_this score refernce indicator for AI
+*@return best move value
+**/
 {
 	queue<string> moves;   // All possible opponent moves
 	int value;             // Value of a board position after opponent moves
@@ -124,7 +147,9 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 	// The answer we return should be from player's perspective, so multiply times -1:
 	return -best_value;
 }
-
+/**
+*prompt the AI to begin to make a move on the game board
+**/
 void game::make_computer_move( )
 {
 	queue<string> moves;
@@ -157,7 +182,9 @@ void game::make_computer_move( )
 	// Make the best move.
 	make_move(best_move);
 }
-
+/**
+*prompt user to make a move on the game board.
+**/
 void game::make_human_move( ) {
 	string move;
 

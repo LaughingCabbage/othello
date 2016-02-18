@@ -1,4 +1,4 @@
-all: build archive
+all: doc build archive
 
 
 build: game.o main.o othello.o
@@ -8,6 +8,8 @@ build: game.o main.o othello.o
 archive: build
 	tar -cvzf game.tar.gz makefile game.cc main.cc othello.cc\
 				colors.h game.h piece.h othello.h
+doc: Doxyfile
+	doxygen Doxyfile
 
 game.o: game.cc game.h
 	g++ -c game.cc
@@ -19,4 +21,5 @@ othello.o: othello.cc othello.h game.h piece.h piece.h
 	g++ -c othello.cc
 
 clean:
-	rm *.o *~ game game.tar.gz
+	rm -f *.o *~ game game.tar.gz
+	rm -rf html latex

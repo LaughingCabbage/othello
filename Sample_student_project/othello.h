@@ -1,7 +1,12 @@
-// Brock Ferrell
+///@author Brock Ferrell
 // CS2401
 // November 23, 2015
 // Project7
+
+///	\file othello.h
+///	\breif Othello header file
+
+
 
 #ifndef OTHELLO_H
 #define OTHELLO_H
@@ -14,6 +19,10 @@ using namespace std;
 namespace main_savitch_14
 {
 
+/**
+\class Othello othello.h
+\breif Othello class derived from public game
+**/
 class Othello: public game {
 public:
 

@@ -1,5 +1,9 @@
 // File: game.h (part of the namespace main_savitch_14)
 
+/**
+*\file game.h
+*\breif header file for game
+**/
 
 #ifndef MAIN_SAVITCH_GAME
 #define MAIN_SAVITCH_GAME
@@ -8,6 +12,7 @@
 
 namespace main_savitch_14
 {
+///	\class game.h
 class game
 {
 public:

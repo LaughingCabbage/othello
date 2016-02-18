@@ -3,11 +3,17 @@
 // November 23, 2015
 // Project7
 
+/**\file othello.cc
+*\breif contains the implemenation for the othello game
+*@see othello.h
+************************************************/
 #include "othello.h"
 
 namespace main_savitch_14
 {
-
+/**
+*displays the current board setting in a new frame in the console window
+**/
 void Othello::display_status()const
 {
   cout << BLUE << "   _______ _______ _______ _______ _______ _______ _______ _______\n";
@@ -47,7 +53,10 @@ void Othello::display_status()const
   }
   cout << "\nEnter a move in the format(letter,number) (Ex: A3)" << endl;
 }
-
+/**
+*makes a legal othello move by evaluating flips in 8 directions
+*@param move user input string move
+**/
 void Othello::make_move(const string& move) {
 
   int c, r;
