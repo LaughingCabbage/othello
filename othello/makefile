@@ -1,16 +1,25 @@
-all: othello
+all: doc build archive
 
-othello: main.o game.o board.o
-	g++ main.o game.o board.o -o othello
 
-main.o: main.cc
-	g++ -c main.cc
+build: game.o main.o board.o
+	g++ game.o main.o board.o -o Othello
+	rm *.o
 
-game.o: game.cc
+archive: build
+	tar -cvzf Othello.tar.gz makefile game.cc main.cc board.cc\
+				colors.h game.h piece.h board.h LISCENSE.txt
+doc: Doxyfile
+	doxygen Doxyfile
+
+game.o: game.cc game.h
 	g++ -c game.cc
 
-board.o: board.cc
+main.o: main.cc game.h board.h
+	g++ -c main.cc
+
+board.o: board.cc board.h game.h piece.h colors.h
 	g++ -c board.cc
 
 clean:
-	rm  -f *.o *~
+	rm -f *.o *~ Othello Othello.tar.gz
+	rm -rf html latex
